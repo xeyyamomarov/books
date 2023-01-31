@@ -2,9 +2,18 @@ import { createContext, useState,useCallback } from 'react';
 import axios from 'axios';
 
 export const BooksContext = createContext();
+const getLocalItems = () => {
+  let data = localStorage.getItem("books");
+  if (data) {
+    return JSON.parse(data);
+  } else {
+    return [];
+  }
+};
 
 function Provider({ children }) {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState(getLocalItems());
+
 
   const fetchBooks = useCallback( async () => {
     const response = await axios.get('http://localhost:3001/books');
