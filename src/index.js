@@ -6,7 +6,7 @@ import { Provider } from "./context/books";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider value={5}>
+  <Provider >
     <App />
   </Provider>
 );
